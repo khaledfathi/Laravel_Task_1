@@ -11,22 +11,24 @@
     <h1>Laravel Task 1 </h1>
     <div class="content">
         <h3>Add Product</h3>
-        <form action="">
+        @if ($errors->any())
+            <h4 class="err_msg">{{$errors->first()}}</h4>
+        @elseif (session()->get('err_msg'))
+            <h4 class="err_msg">{!! session()->get('err_msg') !!}</h4>
+        @elseif (session()->get('success_msg'))
+            <h4 class="success_msg">{!! session()->get('success_msg') !!}</h4>
+        @endif
+        <form action="{{url('addProduct')}}" method="post">
             @csrf
             <div>
                 <label for="">Product Name</label>
-                <input type="text">
-            </div>
-            <div>
-                <label for="">Product Description</label>
-                <input type="text">
+                <input type="text" name="product_name">
             </div>
             <label for="">Category : </label><br>
-            <select name="" id="" multiple>
-                <option value="">Cat 1 </option>
-                <option value="">Cat 2 </option>
-                <option value="">Cat 3 </option>
-                <option value="">Cat 4 </option>
+            <select name="categories[]"  multiple="multiple">
+                @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                @endforeach
             </select><br>
             <input type="submit" value="Save">
         </form>

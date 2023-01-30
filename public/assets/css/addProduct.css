@@ -64,3 +64,17 @@ select{
     width: 200px ;
     margin-left: 170px;
 }
+
+.err_msg , .success_msg{
+    max-width:max-content;
+    text-align: center;
+    padding: 5px;
+}
+.err_msg{
+    color:white;
+    background-color: red;
+}
+.success_msg{
+    color:white;
+    background-color: green;
+}

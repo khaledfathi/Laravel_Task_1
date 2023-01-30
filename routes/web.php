@@ -16,7 +16,14 @@ use App\Http\Controllers\product;
 |
 */
 
-
+//Home 
 route::get('/', [home::class , 'homePage']); 
+
+//Category
 route::get('addCategory', [category::class , 'addCategory']); 
+route::post('addCategory', [category::class , 'saveCategory']); 
+
+
+//Product
 route::get('addProduct', [product::class , 'addProduct']); 
+route::post('addProduct', [product::class , 'saveProduct']); 
